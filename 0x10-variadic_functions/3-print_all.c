@@ -3,12 +3,12 @@
 #include <stdio.h>
 
 /**
- * print_all - to print all
- * @format: The list of the types of arguments passed to the function
+ * print_all - prints anything
+ * @format: list of types of arguments passed to the function
  */
 void print_all(const char * const format, ...)
 {
-	int b = 0;
+	int i = 0;
 	char *str, *sep = "";
 
 	va_list list;
@@ -17,14 +17,14 @@ void print_all(const char * const format, ...)
 
 	if (format)
 	{
-		while (format[b])
+		while (format[i])
 		{
-			switch (format[b])
+			switch (format[i])
 			{
 				case 'c':
 					printf("%s%c", sep, va_arg(list, int));
 					break;
-				case 'b':
+				case 'i':
 					printf("%s%d", sep, va_arg(list, int));
 					break;
 				case 'f':
@@ -37,11 +37,11 @@ void print_all(const char * const format, ...)
 					printf("%s%s", sep, str);
 					break;
 				default:
-					b++;
+					i++;
 					continue;
 			}
 			sep = ", ";
-			b++;
+			i++;
 		}
 	}
 
